@@ -31,32 +31,18 @@ playerCards = []
 
 # List to hold the dealer's hand
 dealerCards = []
-print(len(myCards))
-print(myCards)
-# Function to randomly deal two cards to whoever, and appends it to a list
-def dealTwoCards(array, deck):
-    '''
-    Parameters: List, List(List)
-    Returns: None, Affects given list in parameter
-    '''
-    # Randomly choose a card from the deck
-    card = random.choice(range(len(deck)))
-    card2 = random.choice(range(len(deck)))
-    # Append the card to the list
-    array.append(card)
-    array.append(card2)
-    # Remove the card from the deck
-    deck.pop(card)
-    deck.pop(card2)
-
-    return card, card2
-
-print(dealTwoCards(playerCards, myCards))
-print(dealTwoCards(dealerCards, myCards))
-print(myCards)
-print(len(myCards))
+dealTwoCards(playerCards, myCards)
+dealTwoCards(dealerCards, myCards)
 print(playerCards)
 print(dealerCards)
+
+
+print(nameOfCards(playerCards))
+print(nameOfCards(dealerCards))
+
+dealTwoCards(playerCards, myCards)
+print(nameOfCards(playerCards))
+
 
 
 '''
@@ -67,6 +53,7 @@ print(myCards)
 print(playerCards)
 print(dealerCards)
 '''
+
 '''
 print("You have been delt two cards. Your count is: " + str(playerHand))
 playerChoice = str.lower(input("Choose to hit or stand!: "))

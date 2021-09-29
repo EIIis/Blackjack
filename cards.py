@@ -1,9 +1,34 @@
 import random
 # File contains functions that will be called to run the game
 
-def chooseCard(myCards):
-    card = random.choice(myCards)
-    return card
+# Function to randomly deal two cards to whoever, and appends it to a list
+def dealTwoCards(array, deck):
+    '''
+    Parameters: List, List[List]
+    Returns: None, Affects given List[List] in parameter
+    '''
+    # Randomly choose a card from the deck
+    card = random.choice(range(len(deck)))
+    card2 = random.choice(range(len(deck)))
+    # Append the element to the list
+    array.append(deck[card])
+    array.append(deck[card2])
+    # Remove the card from the deck
+    deck.pop(card)
+    deck.pop(card2)
+
+# Function to randomly deal one card to whoever, and appends it to a list
+def dealOneCard(array, deck):
+    '''
+    Parameters: List, List[List]
+    Returns: None, Affects given List[List] in parameter
+    '''
+    # Randomly choose a card from the deck
+    card = random.choice(range(len(deck)))
+    # Append the element to the list
+    array.append(deck[card])
+    # Remove the card from the deck
+    deck.pop(card)
 
 def faceOfCard(card):
     if card[0] == 1:
@@ -42,3 +67,15 @@ def suitOfCard(card):
         return "Diamonds"
     elif card[1] == 4:
         return "Clubs"
+
+def nameOfCards(listOfCards):
+    '''
+    Parameters: List
+    Returns: Array of Strings
+    '''
+    listOfNames = []
+    for card in listOfCards:
+        suit = suitOfCard(card)
+        face = faceOfCard(card)
+        listOfNames.append(str(face) + " of " + suit)
+    return listOfNames
