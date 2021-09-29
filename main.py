@@ -4,7 +4,8 @@ from cards import *
 
 # Set of all cards represented in a matrix format with a list a list
 # Each card is represented by the two numbers in each element, the card representation is [rank, suit]
-# The first number is the rank, so 1 = Ace, 2 = 2, 3 = 3, 4 = 4, 5 = 5, 6 = 6, 7 = 7, 8 = 8, 9 = 9, 10 = 10, 11 = Jack, 12 = Queen, 13 = King
+# The first number is the rank, so 1 = Ace, 2 = 2, 3 = 3, 4 = 4, 5 = 5, 6 = 6, 7 = 7, 8 = 8, 9 = 9, 
+# 10 = 10, 11 = Jack, 12 = Queen, 13 = King
 # The second number is the suit, so 1 = Spades, 2 = Hearts, 3 = Diamonds, 4 = Clubs
 # So the card representation is [rank, suit]
 myCards = [[1, 1], [1, 2], [1, 3], [1, 4],
@@ -34,14 +35,19 @@ dealerCards = []
 dealTwoCards(playerCards, myCards)
 dealTwoCards(dealerCards, myCards)
 print(playerCards)
-print(dealerCards)
+# print(dealerCards)
 
 
 print(nameOfCards(playerCards))
 print(nameOfCards(dealerCards))
 
-dealTwoCards(playerCards, myCards)
+
+playerHand = handValue(playerCards)
+print(playerHand)
+dealOneCard(playerCards, myCards)
 print(nameOfCards(playerCards))
+playerHand = handValue(playerCards)
+print(playerHand)
 
 
 
