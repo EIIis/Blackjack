@@ -51,9 +51,15 @@ while(1):
         playerChoice = str.lower(input("Hit or stand?: "))
 
     elif playerChoice == "s":
-        print("You chose to stand.")
-        print("Your final hand is " + str(playerHand))
-        break
+        if playerHand == 21:
+            print("You chose to stand.")
+            print("Your final hand is " + str(playerHand))
+            print("You have won! You have a blackjack!")
+            quit()
+        else:
+            print("You chose to stand.")
+            print("Your final hand is " + str(playerHand))
+            break
     else:
         playerChoice = str.lower(input("Invalid choice, please choose to (H)it or (S)tand: "))
 

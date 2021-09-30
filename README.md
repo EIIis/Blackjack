@@ -13,6 +13,7 @@
 ## Assumptions made
 #### The Ace cards can be counted either as a 1 or 11 whenever it's more convienent for the player. For example, if the player has a total of 19, with an Ace card counting at 11 (8 + 11 = 19), and then the player decides to hit, and the next card put the count over 21, then the player's count will change. So, for example, if the player has a total of 19, and the player decides to hit and the next card is a 5, the players hand will change to 14 because 11 changes to 1 (8 + 1 + 5 = 14).
 #### Another assumption I made was that there is only one player against the dealer and that the game starts with only 1 deck, and not multiple decks. Unlike Vegas, since this game was made for only 1 person, having multiple decks would not have made sense. 
+#### Also since this isn't Vegas, the player can only have one hand at a time, meaning that the player can't split their hand. Also, since there's no betting, the player can't double down or call insurance.
 
 ## Testing
 #### I'm not sure how to run 'formal' test in Python but, I did add assert statements to the code. To run that, just do [ADD LATER HERE ELLIS!]  
