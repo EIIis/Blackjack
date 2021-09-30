@@ -64,6 +64,10 @@ def dealOneCard(array, deck):
 
 # Function to check the face of the card
 def faceOfCard(card):
+    '''
+    Parameters: List
+    Returns: String or Int
+    '''
     if card[0] == 1:
         return "Ace"
     elif card[0] == 11:
@@ -77,6 +81,10 @@ def faceOfCard(card):
 
 # Function to check the suit of the card
 def suitOfCard(card):
+    '''
+    Parameters: List
+    Returns: String
+    '''
     if card[1] == 1:
         return "Spades"
     elif card[1] == 2:
@@ -132,4 +140,3 @@ def handValue(listofCards):
             else:
                 value += 11
     return value
-
