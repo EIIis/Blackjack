@@ -1,6 +1,38 @@
 import random
 # File contains functions that will be called to run the game
 
+# Set of all cards represented in a matrix format with a list a list
+# Each card is represented by the two numbers in each element, the card representation is [rank, suit]
+# The first number is the rank, so 1 = Ace, 2 = 2, 3 = 3, 4 = 4, 5 = 5, 6 = 6, 7 = 7, 8 = 8, 9 = 9, 
+# 10 = 10, 11 = Jack, 12 = Queen, 13 = King
+# The second number is the suit, so 1 = Spades, 2 = Hearts, 3 = Diamonds, 4 = Clubs
+# So the card representation is [rank, suit]
+myCards = [[1, 1], [1, 2], [1, 3], [1, 4],
+[2, 1], [2, 2], [2, 3], [2, 4],
+[3, 1], [3, 2], [3, 3], [3, 4],
+[4, 1], [4, 2], [4, 3], [4, 4],
+[5, 1], [5, 2], [5, 3], [5, 4],
+[6, 1], [6, 2], [6, 3], [6, 4],
+[7, 1], [7, 2], [7, 3], [7, 4],
+[8, 1], [8, 2], [8, 3], [8, 4],
+[9, 1], [9, 2], [9, 3], [9, 4],
+[10, 1], [10, 2], [10, 3], [10, 4],
+[11, 1], [11, 2], [11, 3], [11, 4],
+[12, 1], [12, 2], [12, 3], [12, 4],
+[13, 1], [13, 2], [13, 3], [13, 4]]
+
+# Count for player's hand
+playerHand = 0
+# Count for dealer's hand
+dealerHand = 0
+
+# List to hold the player's hand
+playerCards = []
+
+# List to hold the dealer's hand
+dealerCards = []
+
+
 # Function to randomly deal two cards to whoever, and appends it to a list
 def dealTwoCards(array, deck):
     '''
