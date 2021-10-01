@@ -22,10 +22,10 @@
 * Python 3.6+
 * pytest
   * To install pytest, run the following command in the same directory as the files: `pip3 install -U pytest`
-##### Note: If you'd like to read more about pytest, you can read more about [pytesthere](https://docs.pytest.org/en/latest/). Python 3.6 and higher is required to run pytest.
+##### Note: If you'd like to read more about pytest, you can read more about [pytest here](https://docs.pytest.org/en/latest/). Python 3.6 and higher is required to run pytest.
 ## Running the Test
 1. Open your terminal and navigate to the directory where cards.py and test.py are located. You then can install pytest in here.
 2. Once you have installed pytest, run the following command within your terminal `pytest test.py`
-3. The test will then run. If the test passes, then the test will print out a message saying that the test passed. If the test fails, then the test will print out a message saying that the test failed.
+3. The test will then run. If the test passes, then all will pass and no at the bottom, it will show that all test passed. If the test fails, then it will throw an error and show the test that failed and why it failed. 
 ## Type of testing
 #### The test that I implemented was a unit test, meaning that it tests a single function. The reason I did unit testing was because the entire code is made using functions, and I felt this was the best way to catch errors. I did some manually testing as well but to cover any corner cases, unit testing was the best for this project.
