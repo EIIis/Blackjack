@@ -18,7 +18,7 @@ print("command line and press enter. The capitaliztion doesn't matter. Let's beg
 dealTwoCards(playerCards, myCards)
 dealTwoCards(dealerCards, myCards)
 
-print("The dealer has been dealt two cards. His card is a " + nameOfCards(dealerCards)[0] + " and his second card is hidden.\n")
+print("The dealer has been dealt two cards. His first card is a " + nameOfCards(dealerCards)[0] + " and his second card is hidden.\n")
 print("You have been dealt two cards. Your cards are:")
 print(nameOfCards(playerCards))
 trueValue = bestValueOfHand(playerCards)
@@ -34,7 +34,6 @@ while(1):
         dealOneCard(playerCards, myCards)
         print("Your new hand is:")
         print(nameOfCards(playerCards))
-        # trueValue = bestValueOfHand(playerCards)
         trueValue = bestValueOfHand(playerCards)
         print("Your hand count is " + str(trueValue) + "!\n")
         # Conditional statement to check if player has went over 21
@@ -75,7 +74,12 @@ print("Dealer's current handcount is: " + str(dealerValue) + ".\n")
 # Dealer's game loop
 while (1):
     time.sleep(1)
-    if dealerValue < 17:
+    # Checking to see if the dealer has a greater handcount than the player
+    if dealerValue > trueValue and dealerValue < 22:
+        print("You have lost!")
+        quit()
+    # Conditional statement to check if dealer is still under 17
+    elif dealerValue < 17:
         time.sleep(1)
         print("The dealer has hit.")
         dealOneCard(dealerCards, myCards)
@@ -84,13 +88,9 @@ while (1):
 
         dealerValue = bestValueOfHand(dealerCards)
         print("Dealer's handcount is " + str(dealerValue) + "!\n")
-
-        if dealerValue > trueValue and dealerValue < 22:
-            print("You have lost!")
-            quit()
-        else:
-            continue
+        continue
         time.sleep(1)
+    # Conditional statement to check if dealer is between 17 and 21, it stops because thats the rule
     elif dealerValue >= 17 and dealerValue <= 21:
         print("The dealer's hand is now " + str(dealerValue))
         print("The dealer has stopped hitting.")
@@ -102,6 +102,7 @@ while (1):
             print("You have lost!")
         quit()
     else:
+        # Conditional statement to check if dealer has busted
         print("The dealer's hand is now " + str(dealerValue))
         print("The dealer has busted! You have won!")
         quit()

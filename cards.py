@@ -26,9 +26,6 @@ playerHand = 0
 # Count for dealer's hand
 dealerHand = 0
 
-# Count for inital dealer's hand
-dealerInitalHand = 0
-
 # List to hold the player's hand
 playerCards = []
 
@@ -121,7 +118,13 @@ def nameOfCards(listOfCards):
 # Function to calculate the total value of a hand, without the Ace
 # Also keeps track of the number of aces in the hand
 def sumOfAllExceptAce(hand):
+    '''
+    Parameter: List[List] of cards
+    Return: tuple, with first value -> total count w/o Aces and second value -> count of total Aces in the hand
+    '''
+    # Value will hold the hand value, excluding Aces
     value = 0
+    # Value will hold the amount of Aces that appear within the hand.
     count = 0
     for i in range(len(hand)):
         if hand[i][0] != 1:
@@ -139,7 +142,9 @@ def bestValueOfHand(hand):
     Parameter: List[List] of cards
     Return: the value of the hand
     '''
+    # exceptOne will hold the value of all cards that != Aces
     exceptOne = sumOfAllExceptAce(hand)[0]
+    # count will hold the amount of Aces that appear within the hand.
     count = sumOfAllExceptAce(hand)[1]
     if count == 0:
         return exceptOne
@@ -171,3 +176,4 @@ def bestValueOfHand(hand):
             return fourteenValue
         else:
             return fourValue
+            
