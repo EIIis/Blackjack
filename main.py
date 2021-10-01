@@ -12,19 +12,20 @@ print("score of your hand. If you have a higher score than the dealer, you")
 print("win. If you have a lower score than the dealer, you lose. If you")
 print("tie, then you tie! \n")
 print("The controls are relatively simple. To hit just type 'H' in")
-print("the command line and press enter. To stand, just press 'S' in the")
-print("command line and press enter. Let's begin! \n")
+print("the command line and press enter, to stand, just press 'S' in the")
+print("command line and press enter. The capitaliztion doesn't matter. Let's begin! \n")
 
 dealTwoCards(playerCards, myCards)
 dealTwoCards(dealerCards, myCards)
-print("The dealer has been dealt two cards. His cards are hidden!")
-print("You have been delt two cards. Your cards are:")
+
+print("The dealer has been dealt two cards. His card is a " + nameOfCards(dealerCards)[0] + " and his second card is hidden.\n")
+print("You have been dealt two cards. Your cards are:")
 print(nameOfCards(playerCards))
-playerHand = handValue(playerCards)
-print("Your current handcount is: " + str(playerHand) + ".\n")
+trueValue = bestValueOfHand(playerCards)
+print("Your current handcount is: " + str(trueValue) + ".\n")
 playerChoice = str.lower(input("Choose to hit or stand!: "))
 
-# This is the main game loop. It will keep going until the player decides to stand
+# This is the main game loop. It will keep going until the player decides to stand or wins.
 while(1):
 
     if playerChoice == "h":
@@ -33,32 +34,30 @@ while(1):
         dealOneCard(playerCards, myCards)
         print("Your new hand is:")
         print(nameOfCards(playerCards))
-
-        playerHand = handValue(playerCards)
-        print("Your hand count is " + str(playerHand) + "!\n")
-
+        # trueValue = bestValueOfHand(playerCards)
+        trueValue = bestValueOfHand(playerCards)
+        print("Your hand count is " + str(trueValue) + "!\n")
         # Conditional statement to check if player has went over 21
-        if playerHand > 21:
+        if trueValue > 21:
             time.sleep(1)
             print("You have busted! You lose!")
             quit()
         # Conditional statement to check if player hit 21
-        elif playerHand == 21:
+        elif trueValue == 21:
             time.sleep(1)
             print("You have won! You have a blackjack!")
             quit()
-
         playerChoice = str.lower(input("Hit or stand?: "))
 
     elif playerChoice == "s":
-        if playerHand == 21:
+        if trueValue == 21:
             print("You chose to stand.")
-            print("Your final hand is " + str(playerHand))
+            print("Your final hand is " + str(trueValue))
             print("You have won! You have a blackjack!")
             quit()
         else:
             print("You chose to stand.")
-            print("Your final hand is " + str(playerHand))
+            print("Your final hand is " + str(trueValue))
             break
     else:
         playerChoice = str.lower(input("Invalid choice, please choose to (H)it or (S)tand: "))
@@ -69,39 +68,40 @@ print("\nThe dealer is now playing.")
 time.sleep(1)
 print("The dealer's cards are: ")
 print(nameOfCards(dealerCards))
-dealerHand = handValue(dealerCards)
+dealerValue = bestValueOfHand(dealerCards)
 time.sleep(1)
-print("Dealer's current handcount is: " + str(dealerHand) + ".\n")
+print("Dealer's current handcount is: " + str(dealerValue) + ".\n")
 
+# Dealer's game loop
 while (1):
     time.sleep(1)
-    if dealerHand < 17:
+    if dealerValue < 17:
         time.sleep(1)
         print("The dealer has hit.")
         dealOneCard(dealerCards, myCards)
         print("Dealer's new hand is:")
         print(nameOfCards(dealerCards))
 
-        dealerHand = handValue(dealerCards)
-        print("Dealer's handcount is " + str(dealerHand) + "!\n")
+        dealerValue = bestValueOfHand(dealerCards)
+        print("Dealer's handcount is " + str(dealerValue) + "!\n")
 
-        if dealerHand > playerHand and dealerHand < 22:
+        if dealerValue > trueValue and dealerValue < 22:
             print("You have lost!")
             quit()
         else:
             continue
         time.sleep(1)
-    elif dealerHand >= 17 and dealerHand <= 21:
-        print("The dealer's hand is now " + str(dealerHand))
+    elif dealerValue >= 17 and dealerValue <= 21:
+        print("The dealer's hand is now " + str(dealerValue))
         print("The dealer has stopped hitting.")
-        if dealerHand < playerHand:
+        if dealerValue < trueValue:
             print("You have won!")
-        elif dealerHand == playerHand:
+        elif dealerValue == trueValue:
             print("You have tied!")
         else:
             print("You have lost!")
         quit()
     else:
-        print("The dealer's hand is now " + str(dealerHand))
+        print("The dealer's hand is now " + str(dealerValue))
         print("The dealer has busted! You have won!")
         quit()

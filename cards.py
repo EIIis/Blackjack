@@ -26,6 +26,9 @@ playerHand = 0
 # Count for dealer's hand
 dealerHand = 0
 
+# Count for inital dealer's hand
+dealerInitalHand = 0
+
 # List to hold the player's hand
 playerCards = []
 
@@ -115,28 +118,56 @@ def nameOfCards(listOfCards):
         listOfNames.append(str(face) + " of " + suit)
     return listOfNames
 
-# Function to calculate the total value of the hand we have
-def handValue(listofCards):
+# Function to calculate the total value of a hand, without the Ace
+# Also keeps track of the number of aces in the hand
+def sumOfAllExceptAce(hand):
+    value = 0
+    count = 0
+    for i in range(len(hand)):
+        if hand[i][0] != 1:
+            if hand[i][0] >= 11 and hand[i][0] <= 13:
+                value += 10
+            else:
+                value += hand[i][0]
+        else:
+            count += 1
+    return value, count
+
+# Function to calculate best possible value of a hand, with an Ace
+def bestValueOfHand(hand):
     '''
-    Parameter: list of cards
+    Parameter: List[List] of cards
     Return: the value of the hand
     '''
-    # Using a 0 to start the value of the hand at 0, since we have to recalculate 
-    # the entire list each time we add a card. But that's okay, since we have to 
-    # check if the value of the hand is over 21 anyway
-    value = 0
-    # Loop through the list of cards
-    for card in listofCards:
-        # Checking if the numbers are 2-10, if they are we can add there value to the hand
-        if card[0] >= 2 and card[0] <= 10:
-            value += card[0]
-        # Any value that is over 11 is worth 10, is >= 11 will be a face card
-        elif card[0] >= 11:
-            value += 10
-        # Running and checking if the it's an Ace. If it is, we need to check if the value of the hand is over 21.
-        elif card[0] == 1:
-            if value + 11 > 21:
-                value += 1
-            else:
-                value += 11
-    return value
+    exceptOne = sumOfAllExceptAce(hand)[0]
+    count = sumOfAllExceptAce(hand)[1]
+    if count == 0:
+        return exceptOne
+    elif count == 1:
+        oneValue = exceptOne + 1
+        elevenValue = exceptOne + 11
+        if elevenValue <= 21:
+            return elevenValue
+        else:
+            return oneValue
+    elif count == 2:
+        twoValue = exceptOne + 2
+        twelveValue = exceptOne + 12
+        if twelveValue <= 21:
+            return twelveValue
+        else:
+            return twoValue
+    elif count == 3:
+        threeValue = exceptOne + 3
+        thirteenValue = exceptOne + 13
+        if thirteenValue <= 21:
+            return thirteenValue
+        else:
+            return threeValue
+    elif count == 4:
+        fourValue = exceptOne + 4
+        fourteenValue = exceptOne + 14
+        if fourteenValue <= 21:
+            return fourteenValue
+        else:
+            return fourValue
