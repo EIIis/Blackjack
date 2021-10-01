@@ -35,4 +35,4 @@
 2. Once you have installed pytest, run the following command within your terminal `pytest test.py`
 3. The test will then run. If the test passes, then all will pass and no at the bottom, it will show that all test passed. If the test fails, then it will throw an error and show the test that failed and why it failed. 
 ## Type of testing
-#### The test that I implemented was a unit test, meaning that it tests a single function. The reason I did unit testing was because the entire code is made using functions, and I felt this was the best way to catch errors. I did some manually testing as well but to cover any corner cases, unit testing was the best for this project.
+#### The test that I implemented was a unit test, meaning that it tests a single function. The reason I did unit testing was because the entire code is made using functions, and I felt this was the best way to catch errors. I did some manually testing as well, by playing the game serveral times, but to cover any corner cases with the functions, unit testing was the best for this project.
